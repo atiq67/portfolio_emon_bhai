@@ -1,153 +1,126 @@
 import ps1 from "../assets/Emon/Projects/p1.png";
 import ps2 from "../assets/Emon/Projects/p2.png";
 import ps3 from "../assets/Emon/Projects/p3.png";
+import { motion } from "framer-motion";
 
 function Projects() {
+  const projects = [
+    {
+      img: ps1,
+      icon: "🏢",
+      type: "Design Project",
+      title: "Proposed Multi-purpose Commercial Building – Pahartali, Raozan, Chattogram",
+      description: "This project features the structural design and analysis of a multi-purpose building using ETABS, ensuring safety, stability, and BNBC code compliance. It includes comprehensive detailing, pile foundation design, and cost estimation, integrating functionality from parking and commercial spaces to offices, event halls, and dormitories.",
+      tags: ["ETABS", "Structural Design", "BNBC Code", "Foundation Design"],
+    },
+    {
+      img: ps2,
+      icon: "🧪",
+      type: "Geotechnical Investigation",
+      title: "Engineering Classification Of Soil At Selected Locations Within The Chattogram Metropolitan Area",
+      description: "This geotechnical project under Course CE-332 examined the soil characteristics of Halishahar Public School, Chattogram, through field sampling and laboratory tests such as moisture content, sieve analysis, specific gravity, and Atterberg limits. The investigation provided insights into soil classification and engineering behavior, showing the soil is suitable for road and fill use.",
+      tags: ["Soil Investigation", "Laboratory Tests", "Field Sampling", "Classification"],
+    },
+    {
+      img: ps3,
+      icon: "🔬",
+      type: "Water Quality Assessment",
+      title: "Comprehensive Analysis of Water Quality near Unilever Kalurghat Factory, Chittagong, Bangladesh",
+      description: "This project, titled 'Comprehensive Analysis of Water Quality near Unilever Kalurghat Factory, Chittagong', assessed industrial wastewater impact through key tests including pH, BOD, COD, TDS, turbidity, and coliform presence. The analysis revealed high chemical contamination and turbidity beyond safe limits, emphasizing the need for improved wastewater treatment.",
+      tags: ["Water Quality", "BOD/COD", "Turbidity", "Environmental Assessment"],
+    },
+  ];
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+  };
+
   return (
-    <div id="projects" className="mt-10 md:mt-16">
-      <div className="h-full py-10 text-white px-7 md:px-20  font-bold">
-        <h2 className="text-sky-600 text-center text-2xl pb-4 uppercase ">
-          Projects
-        </h2>
-        <hr className=" md:pb-10 md:mx-20 border-black" />
-
-        {/* div */}
-        <div className="text-black my-10 lg:my-20 text-center flex flex-wrap justify-center items-center gap-24">
-          {/* project-1 */}
-          <div
-            className="p-5 shadow-2xl flex flex-col lg:flex-row justify-center items-center gap-5 md:gap-10
-                        rounded-2xl hover:scale-110 hover:bg-blue-200 hover:border-blue-300 hover:border-[1px] transition-transform"
-          >
-            <figure className="lg:w-[150%]">
-              <img className=" rounded-2xl" src={ps1} alt="" />
-            </figure>
-
-            <div className="text-md md:text-xl text-left">
-              <p className="uppercase font-serif ">
-                🏢{" "}
-                <span className="font-sans text-sky-800">Design Project:</span>{" "}
-                Proposed Multi-purpose Commercial Building – Pahartali, Raozan,
-                Chattogram
-              </p>
-              <p className="text-sm mt-5 md:text-xl font-normal">
-                This project features the{" "}
-                <span className="font-bold ">
-                  {" "}
-                  structural design and analysis of a multi-purpose building
-                </span>{" "}
-                using ETABS, ensuring safety, stability, and BNBC code
-                compliance. It includes
-                <span className="font-bold">
-                  {" "}
-                  comprehensive detailing, pile foundation design, and cost
-                  estimation,
-                </span>{" "}
-                integrating functionality from parking and commercial spaces to
-                offices, event halls, and dormitories.
-              </p>
-            </div>
+    <div id="projects" className="relative w-full py-20 md:py-28 px-6 md:px-12">
+      <div className="max-w-6xl mx-auto space-y-12">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center space-y-4"
+        >
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-100">
+            <span className="text-amber-500">Projects</span>
+          </h2>
+          <div className="flex justify-center gap-4 items-center">
+            <div className="w-12 h-1 bg-gradient-to-r from-amber-600 to-transparent"></div>
+            <p className="text-amber-600 text-sm uppercase tracking-widest font-semibold">Key Works & Studies</p>
+            <div className="w-12 h-1 bg-gradient-to-l from-amber-600 to-transparent"></div>
           </div>
+        </motion.div>
 
-          {/* project-2 */}
-          <div
-            className="p-5 shadow-2xl flex flex-col lg:flex-row-reverse justify-center items-center gap-5 md:gap-10
-                        rounded-2xl hover:scale-110 hover:bg-blue-200 hover:border-blue-300 hover:border-[1px] transition-transform"
-          >
-            <figure className="lg:w-[160%]">
-              <img className=" rounded-2xl" src={ps2} alt="" />
-            </figure>
+        {/* Projects Grid */}
+        <div className="space-y-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              className="group"
+            >
+              <div className="relative overflow-hidden rounded-xl border border-amber-600 border-opacity-20 hover:border-opacity-40 transition-all duration-300 bg-gradient-to-br from-gray-800 via-gray-900 to-gray-950">
+                {/* Accent line */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-600 to-transparent"></div>
 
-            <div className="text-md md:text-xl text-left">
-              <p className="uppercase font-serif">
-                🧪{" "}
-                <span className="font-sans text-sky-800">
-                  Geotechnical Investigation project:
-                </span>{" "}
-                Engineering Classification Of Soil At Selected Locations Within
-                The Chattogram Metropoliton Area
-              </p>
-              <p className="text-sm mt-5 md:text-xl font-normal">
-                This geotechnical project under{" "}
-                <span className="font-bold italic"> Course CE-332</span>{" "}
-                examined the soil characteristics of
-                <span className="font-bold ">
-                  {" "}
-                  Halishahar Public School, Chattogram,
-                </span>{" "}
-                through{" "}
-                <span className="font-bold  ">
-                  {" "}
-                  field sampling and laboratory tests
-                </span>{" "}
-                such as moisture content, sieve analysis, specific gravity, and
-                Atterberg limits. The investigation provided insights into the
-                soil’s
-                <span className="font-bold ">
-                  {" "}
-                  classification and engineering behavior.
-                </span>{" "}
-                Findings show the soil is
-                <span className="font-bold ">
-                  {" "}
-                  suitable for road and fill use, though its volume change
-                  potential
-                </span>{" "}
-                requires consideration in design.
-              </p>
-            </div>
-          </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 md:p-8">
+                  {/* Image Column */}
+                  <div className={`md:col-span-1 ${index % 2 === 1 ? "md:order-2" : ""}`}>
+                    <div className="relative rounded-lg overflow-hidden h-64 md:h-full border border-amber-600 border-opacity-20 group-hover:border-opacity-40 transition-all">
+                      <img
+                        src={project.img}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                  </div>
 
-          {/* project-3 */}
-          <div
-            className="p-5 shadow-2xl flex flex-col lg:flex-row justify-center items-center gap-5 md:gap-10
-                        rounded-2xl hover:scale-110 hover:bg-blue-200 hover:border-blue-300 hover:border-[1px] transition-transform"
-          >
-            <figure className="lg:w-[150%]">
-              <img className=" rounded-2xl" src={ps3} alt="" />
-            </figure>
+                  {/* Content Column */}
+                  <div className={`md:col-span-2 ${index % 2 === 1 ? "md:order-1" : ""} flex flex-col justify-between space-y-4`}>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl">{project.icon}</span>
+                        <span className="text-xs uppercase tracking-widest font-semibold text-amber-400 bg-amber-600 bg-opacity-20 px-3 py-1 rounded-full">
+                          {project.type}
+                        </span>
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-serif font-bold text-gray-100 group-hover:text-amber-400 transition-colors">
+                        {project.title}
+                      </h3>
+                    </div>
 
-            <div className="text-md md:text-xl text-left">
-              <p className="uppercase font-serif">
-                🔬{" "}
-                <span className=" text-sky-400 font-sans">
-                  Water Quality Assessment Project:{" "}
-                </span>
-                Comprehensive Analysis of Water Quality near Unilever Kalurghat
-                Factory, Chittagong, Bangladesh
-              </p>
-              <p className="text-sm mt-5 md:text-xl font-normal">
-                <span className="font-bold"> Course CE-332</span> This project,
-                titled{" "}
-                <span className="font-bold ">
-                  {" "}
-                  “Comprehensive Analysis of Water Quality near Unilever
-                  Kalurghat Factory, Chittagong”,{" "}
-                </span>{" "}
-                assessed industrial wastewater impact through key tests
-                including
-                <span className="font-bold ">
-                  {" "}
-                  pH, BOD, COD, TDS, turbidity, and coliform presence.{" "}
-                </span>{" "}
-                The analysis revealed
-                <span className="font-bold italic ">
-                  {" "}
-                  high chemical contamination and turbidity{" "}
-                </span>{" "}
-                beyond safe limits, though{" "}
-                <span className="font-bold italic">
-                  {" "}
-                  coliform was absent,{" "}
-                </span>{" "}
-                indicating no bacterial risk. The findings emphasize the{" "}
-                <span className="font-bold italic ">
-                  {" "}
-                  need for improved wastewater treatment{" "}
-                </span>{" "}
-                to ensure environmental compliance and public safety.
-              </p>
-            </div>
-          </div>
+                    <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                      {project.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag, idx) => (
+                        <span
+                          key={idx}
+                          className="text-xs px-3 py-1 bg-gray-700 bg-opacity-50 text-amber-400 rounded-full border border-amber-600 border-opacity-20 group-hover:border-opacity-50 transition-all"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hover effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-5 bg-gradient-to-br from-amber-600 to-transparent transition-opacity duration-300 pointer-events-none"></div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ import Projects from "./Components/Projects";
 function App() {
   return (
     <>
-      <div className="font-sans max-w-screen-2xl mx-auto bg-white ">
+      <div className="w-full bg-gradient-to-b from-gray-900 via-gray-950 to-gray-900">
         {/* Navbar element */}
         <Navbar />
 
