@@ -1,89 +1,116 @@
 import cuet from "../assets/Emon/CUET_logo-removebg-preview.png";
 import milestone from "../assets/Emon/Milstone_collage.png";
 import annada from "../assets/Emon/Annada_logo-removebg-preview.png";
+import { motion } from "framer-motion";
 
 function Education() {
+  const educationData = [
+    {
+      logo: cuet,
+      degree: "Bachelor of Science in Civil Engineering",
+      institution: "Chittagong University of Engineering & Technology (CUET)",
+      gpa: "3.55",
+      max: "4.00",
+      status: "Ranked 11th out of 132 students",
+    },
+    {
+      logo: milestone,
+      degree: "Higher Secondary Certificate (HSC)",
+      institution: "Milestone College, Dhaka, Bangladesh",
+      gpa: "5.00",
+      max: "5.00",
+    },
+    {
+      logo: annada,
+      degree: "Secondary School Certificate (SSC)",
+      institution: "Annada Govt. High School, Brahmanbaria, Bangladesh",
+      gpa: "4.77",
+      max: "5.00",
+    },
+  ];
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
-    <div id="education" className="mt-10 md:mt-16">
-      <div className="h-full py-10 text-white px-7 md:px-20  font-bold">
-        <h2 className="text-sky-600 text-center text-2xl pb-4 uppercase ">
-          Education
-        </h2>
-        <hr className="md:pb-10 md:mx-20 border-black" />
-
-        <div className="text-black py-10 flex flex-col md:flex-row gap-10 md:gap-5">
-          <div
-            className="card shadow-2xl bg-base-100 w-full border-[1px] lg:w-[33.33%]
-         hover:bg-blue-200 hover:scale-105 hover:border-blue-300 transition-transform hover:cursor-pointer"
-          >
-            <figure className="px-2 pt-2  w-[90%] h-[90%] mx-auto">
-              <img src={cuet} alt="cuet logo" className="rounded-xl" />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">
-                BACHELOR OF SCIENCE IN CIVIL ENGINEERING
-              </h2>
-              <p className="italic font-normal">
-                Chittagong University of Engineering & Technology (CUET)
-              </p>
-              <p className="text-xl font-serif">
-                <span className="uppercase font-sans">Result:</span> CGPA
-                <span className="text-green-700"> 3.55</span> out of{" "}
-                <span className="text-red-600">4.00</span>
-              </p>
-              <p className="text-sm text-red-700 italic">
-                Ranked 11th out of 132 students
-              </p>
-            </div>
+    <div id="education" className="relative w-full py-20 md:py-28 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto space-y-12">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center space-y-4"
+        >
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-100">
+            <span className="text-amber-500">Education</span>
+          </h2>
+          <div className="flex justify-center gap-4 items-center">
+            <div className="w-12 h-1 bg-gradient-to-r from-amber-600 to-transparent"></div>
+            <p className="text-amber-600 text-sm uppercase tracking-widest font-semibold">Academic Journey</p>
+            <div className="w-12 h-1 bg-gradient-to-l from-amber-600 to-transparent"></div>
           </div>
+        </motion.div>
 
-          <div
-            className="card shadow-2xl bg-base-100 w-full border-[1px] lg:w-[33.33%]
-         hover:bg-blue-200 hover:scale-105 hover:border-blue-300 transition-transform hover:cursor-pointer"
-          >
-            <figure className="px-2 pt-2  w-[90%] h-[90%] mx-auto">
-              <img
-                src={milestone}
-                alt="milestone logo"
-                className="rounded-xl"
-              />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title uppercase">
-                Higher Secondary Certificate (HSC)
-              </h2>
-              <p className="italic font-normal">
-                Milestone College, Dhaka, Bangladesh
-              </p>
-              <p className="text-xl font-serif">
-                <span className="font-sans uppercase">Result:</span> GPA
-                <span className="text-green-700"> 5.00</span> out of{" "}
-                <span className="text-red-600">5.00</span>
-              </p>
-            </div>
-          </div>
+        {/* Education Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {educationData.map((edu, index) => (
+            <motion.div
+              key={index}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              className="group"
+            >
+              <div className="relative h-full p-8 bg-gradient-to-br from-gray-800 to-gray-900 border border-amber-600 border-opacity-20 rounded-xl hover:border-opacity-50 transition-all duration-300 overflow-hidden">
+                {/* Accent line */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-600 to-transparent"></div>
 
-          <div
-            className="card shadow-2xl bg-base-100 w-full border-[1px] lg:w-[33.33%]
-         hover:bg-blue-200 hover:scale-105 hover:border-blue-300 transition-transform hover:cursor-pointer"
-          >
-            <figure className="px-2 pt-2 w-[90%] h-[90%] mx-auto">
-              <img src={annada} alt="annada logo" className="rounded-xl" />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title uppercase">
-                Secondary School Certificate (SSC)
-              </h2>
-              <p className="italic font-normal">
-                Annada Govt. High School, Brahmanbaria, Bangladesh{" "}
-              </p>
-              <p className="text-xl font-serif">
-                <span className="font-sans uppercase">Result:</span> GPA
-                <span className="text-green-700"> 4.77</span> out of{" "}
-                <span className="text-red-600">5.00</span>
-              </p>
-            </div>
-          </div>
+                {/* Logo Section */}
+                <div className="flex justify-center mb-6">
+                  <div className="w-24 h-24 rounded-lg bg-gray-700 bg-opacity-50 p-2 border border-amber-600 border-opacity-30 group-hover:border-opacity-100 transition-all duration-300">
+                    <img
+                      src={edu.logo}
+                      alt="Logo"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-serif font-bold text-gray-100 text-center">
+                    {edu.degree}
+                  </h3>
+                  <p className="text-sm text-gray-400 text-center italic">
+                    {edu.institution}
+                  </p>
+
+                  {/* GPA */}
+                  <div className="pt-4 border-t border-amber-600 border-opacity-20 space-y-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-amber-500 font-semibold">Result:</span>
+                      <span className="text-gray-100">
+                        <span className="text-amber-400 font-bold">{edu.gpa}</span>
+                        <span className="text-gray-500"> / {edu.max}</span>
+                      </span>
+                    </div>
+                    {edu.status && (
+                      <p className="text-xs text-amber-600 text-center italic pt-2">
+                        {edu.status}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Hover effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-5 bg-gradient-to-br from-amber-600 to-transparent transition-opacity duration-300 pointer-events-none"></div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>

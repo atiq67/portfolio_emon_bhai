@@ -1,148 +1,131 @@
+import { motion } from "framer-motion";
+import { Download } from "lucide-react";
+
 function AboutMe() {
+  const interests = [
+    "Structural Engineering",
+    "Sustainable Materials",
+    "Computational Mechanics",
+    "Sustainable Materials & Infrastructures",
+    "Geopolymer Concrete",
+    "Structural Behavior",
+    "Earthquake Engineering",
+    "Finite Element Modeling",
+    "Life-Cycle Assessment",
+    "Prestressed Concrete",
+    "High-Performance Cementitious Materials",
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
-    <div id="about" className="mt-10 md:mt-16">
-      <div className="h-full py-10 text-black px-7 md:px-20  font-bold">
-        <h2 className="text-sky-600 text-center text-2xl pb-4 ">ABOUT ME</h2>
-        <hr className=" md:pb-10 md:mx-20 border-black" />
+    <div id="about" className="relative w-full py-20 md:py-28 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto space-y-16">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center space-y-4"
+        >
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-100">
+            About <span className="text-amber-500">Me</span>
+          </h2>
+          <div className="flex justify-center gap-4 items-center">
+            <div className="w-12 h-1 bg-gradient-to-r from-amber-600 to-transparent"></div>
+            <p className="text-amber-600 text-sm uppercase tracking-widest font-semibold">Structural Vision</p>
+            <div className="w-12 h-1 bg-gradient-to-l from-amber-600 to-transparent"></div>
+          </div>
+        </motion.div>
 
-        <div>
-          <p className=" text-2xl md:text-3xl text-center font-normal">
-            My goal is to build a fulfilling career in the field of Structural
-            Engineering by engaging in teaching, research, and continuous
-            knowledge development. I hope to make a meaningful impact in both
-            academic and professional circles by sharing knowledge and
-            supporting sustainable, innovative approaches to civil
-            infrastructure.
+        {/* Goal Statement */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="text-center space-y-8"
+        >
+          <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            My goal is to build a fulfilling career in the field of Structural Engineering by engaging in teaching, research, and continuous knowledge development. I hope to make a meaningful impact in both academic and professional circles by sharing knowledge and supporting sustainable, innovative approaches to civil infrastructure.
           </p>
 
-          <div className="flex flex-col md:flex-row ali gap-10 mt-10 justify-center items-center">
-            <div>
-              <a href="/Industry_cv.pdf" download>
-                <button
-                  className="w-[175px]
-              hover:scale-110
-        relative px-5 py-2 
-        uppercase
-        text-white font-normal hover:font-bold text-lg 
-        rounded-xl 
-        bg-sky-400
-        shadow-lg
-        hover:bg-sky-600
-        transition 
-        duration-300
-        ease-in-out"
-                >
-                  Indrustial CV
-                </button>
-              </a>
-            </div>
-            <div>
-              <a href="/Academic_cv.pdf" download>
-                <button
-                  className="w-[175px]
-               hover:scale-110
-         relative px-5 py-2 
-         uppercase
-         text-white font-normal hover:font-bold text-lg 
-         rounded-xl 
-         bg-sky-400
-         shadow-lg
-         hover:bg-sky-600
-         transition 
-         duration-300
-         ease-in-out"
-                >
-                  Academic CV
-                </button>
-              </a>
-            </div>
+          {/* CV Download Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <motion.a
+              href="/Industry_cv.pdf"
+              download
+              whileHover={{ scale: 1.05 }}
+              className="group"
+            >
+              <button className="flex items-center gap-3 px-8 py-3 border-2 border-amber-600 text-amber-500 font-semibold rounded-lg hover:bg-amber-600 hover:text-gray-950 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-amber-600/30">
+                <Download size={20} />
+                Industrial CV
+              </button>
+            </motion.a>
+            <motion.a
+              href="/Academic_cv.pdf"
+              download
+              whileHover={{ scale: 1.05 }}
+              className="group"
+            >
+              <button className="flex items-center gap-3 px-8 py-3 border-2 border-amber-600 text-amber-500 font-semibold rounded-lg hover:bg-amber-600 hover:text-gray-950 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-amber-600/30">
+                <Download size={20} />
+                Academic CV
+              </button>
+            </motion.a>
           </div>
+        </motion.div>
 
-          <p className="text-sky-600 italic text-2xl text-center pt-16 md:pt-20 pb-5 font-bold">
-            Research Interest
-          </p>
-          <div className="flex flex-wrap gap-12 justify-center items-center">
-            <div
-              className="w-full  md:w-[45%] shadow-2xl border-[1px] rounded-2xl px-10 py-10  text-center
-            hover:bg-blue-200 font-normal hover:font-bold  hover:text-3xl hover:border-blue-300 hover:scale-110  transition-transform hover:cursor-pointer"
-            >
-              <p className="text-2xl ">Structural Engineering</p>
-            </div>
+        {/* Research Interests */}
+        <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h3 className="text-2xl md:text-3xl font-serif font-bold text-gray-100 mb-2">
+              Research <span className="text-amber-500">Interests</span>
+            </h3>
+            <p className="text-amber-600 text-sm uppercase tracking-widest font-semibold">Exploring New Horizons</p>
+          </motion.div>
 
-            <div
-              className="w-full  md:w-[45%] shadow-2xl border-[1px] rounded-2xl px-10 py-10  text-center
-            hover:bg-blue-200 font-normal hover:font-bold  hover:text-3xl hover:border-blue-300 hover:scale-110  transition-transform hover:cursor-pointer"
-            >
-              <p className="text-2xl ">Sustainable Materials</p>
-            </div>
-
-            <div
-              className="w-full  md:w-[45%] shadow-2xl border-[1px] rounded-2xl px-10 py-10  text-center
-            hover:bg-blue-200 font-normal hover:font-bold  hover:text-3xl hover:border-blue-300 hover:scale-110  transition-transform hover:cursor-pointer"
-            >
-              <p className="text-2xl ">Computional Mechanics </p>
-            </div>
-
-            <div
-              className="w-full  md:w-[45%] shadow-2xl border-[1px] rounded-2xl px-10 py-10  text-center
-            hover:bg-blue-200 font-normal hover:font-bold  hover:text-3xl hover:border-blue-300 hover:scale-110  transition-transform hover:cursor-pointer"
-            >
-              <p className="text-2xl ">
-                Sustainable Materials and Infrastructures
-              </p>
-            </div>
-
-            <div
-              className="w-full  md:w-[45%] shadow-2xl border-[1px] rounded-2xl px-10 py-10  text-center
-            hover:bg-blue-200 font-normal hover:font-bold  hover:text-3xl hover:border-blue-300 hover:scale-110  transition-transform hover:cursor-pointer"
-            >
-              <p className="text-2xl">Geopolymer Concrete</p>
-            </div>
-
-            <div
-              className="w-full  md:w-[45%] shadow-2xl border-[1px] rounded-2xl px-10 py-10  text-center
-            hover:bg-blue-200 font-normal hover:font-bold  hover:text-3xl hover:border-blue-300 hover:scale-110  transition-transform hover:cursor-pointer"
-            >
-              <p className="text-2xl ">Structural Behavior</p>
-            </div>
-
-            <div
-              className="w-full  md:w-[45%] shadow-2xl border-[1px] rounded-2xl px-10 py-10  text-center
-            hover:bg-blue-200 font-normal hover:font-bold  hover:text-3xl hover:border-blue-300 hover:scale-110  transition-transform hover:cursor-pointer"
-            >
-              <p className="text-2xl ">Earthquake Engineering</p>
-            </div>
-
-            <div
-              className="w-full  md:w-[45%] shadow-2xl border-[1px] rounded-2xl px-10 py-10  text-center
-            hover:bg-blue-200 font-normal hover:font-bold  hover:text-3xl hover:border-blue-300 hover:scale-110  transition-transform hover:cursor-pointer"
-            >
-              <p className="text-2xl ">Finite Element Modeling</p>
-            </div>
-
-            <div
-              className="w-full  md:w-[45%] shadow-2xl border-[1px] rounded-2xl px-10 py-10  text-center
-            hover:bg-blue-200 font-normal hover:font-bold  hover:text-3xl hover:border-blue-300 hover:scale-110  transition-transform hover:cursor-pointer"
-            >
-              <p className="text-2xl ">Life-Cycle Assessment</p>
-            </div>
-
-            <div
-              className="w-full  md:w-[45%] shadow-2xl border-[1px] rounded-2xl px-10 py-10  text-center
-            hover:bg-blue-200 font-normal hover:font-bold  hover:text-3xl hover:border-blue-300 hover:scale-110  transition-transform hover:cursor-pointer"
-            >
-              <p className="text-2xl ">Prestressed Concrete</p>
-            </div>
-
-            <div
-              className="w-full  md:w-[45%] shadow-2xl border-[1px] rounded-2xl px-10 py-10  text-center
-            hover:bg-blue-200 font-normal hover:font-bold  hover:text-3xl hover:border-blue-300 hover:scale-110  transition-transform hover:cursor-pointer"
-            >
-              <p className="text-2xl">
-                High-Performance and Multi-Functional Cementitious Materials
-              </p>
-            </div>
-          </div>
+          {/* Interest Cards Grid */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {interests.map((interest, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                className="group"
+              >
+                <div className="relative px-6 py-5 bg-gray-800 bg-opacity-40 border-l-4 border-amber-600 rounded-lg hover:bg-opacity-60 transition-all duration-300 cursor-pointer overflow-hidden">
+                  {/* Background accent */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-transparent opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+                  <p className="relative text-gray-200 group-hover:text-amber-400 transition-colors duration-300 font-semibold">
+                    {interest}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </div>
